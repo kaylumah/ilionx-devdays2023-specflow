@@ -1,0 +1,32 @@
+[.columns.is-vcentered]
+== Gherkin
+
+[.column]
+--
+* Unambiguous executable specification
+* Automated testing using `Cucumber`
+* Document how the system actually behaves
+--
+
+[.column]
+--
+image::{assets_directory}logos/cucumber_alternative.png["Cucumber / Gherkin Logo", 256, 256]
+--
+
+[.notes]
+--
+https://cucumber.io/docs/guides/overview/
+https://cucumber.io/docs/gherkin/reference/
+https://specflow.org/learn/gherkin/#learn-gherkin
+https://docs.specflow.org/projects/specflow/en/latest/Gherkin/Gherkin-Reference.html
+
+* Business-readable specification language
+** Using the concept of the Given/When/Then keywords, introduced by Chris
+Matts
+* Developed as part of Cucumber, but promoted to a tool-agnostic format
+** Open-source parser for 10+ development platforms / programming language
+* Designed to be simple, therefore it lacks programming constructs 
+** No conditions
+** No variables 
+** No loops
+--

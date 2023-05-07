@@ -1,0 +1,87 @@
+== Sharing Data between Bindings
+
+Different *[Binding]* need to share data
+
+[.notes]
+--
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Sharing-Data-between-Bindings.html
+
+Instance fields: If the binding is an instance method, SpecFlow creates a new instance of the containing class for every scenario execution.
+Context Injection: SpecFlow supports a very simple dependency framework that is able to instantiate and inject class instances for the scenarios. With this feature you can group the shared state to context-classes, and inject them into every binding class that is interested in that shared state.
+
+The ScenarioContext is created for each individual scenario execution and it is disposed when the scenario execution has been finished.
+
+The FeatureContext is created when the first scenario is executed from a feature and disposed when the execution of the feature’s scenarios ends. In the rare case, when you need to preserve state in the context of a feature, the FeatureContext.Current instance can be used as a property bag.
+--
+
+[%notitle]
+=== Context Injection
+
+[source, language=gherkin]
+----
+include::{specflow_source_directory}ContextSharing/ContextSharing.feature[lines=1..8]
+----
+
+[.notes]
+--
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Context-Injection.html
+
+Create your POCOs (plain old CLR object), simple .NET classes, representing the shared data.
+Define them as constructor parameters in every binding class that requires them.
+Save the constructor argument to instance fields, so you can use them in the step definitions.
+
+The life-time of these objects is limited to a scenario’s execution.
+The injection is resolved recursively, i.e. the injected class can also have dependencies.
+--
+
+[%notitle]
+=== Context Injection
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}ContextSharing/CalculatorContext.cs[lines=6..11]
+----
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Context Injection
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}ContextSharing/ContextSharing.cs[lines=9;11..24;43]
+----
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Context Injection
+
+[source, language=csharp]
+----
+include::{csharp_source_directory}ComplexContext.cs[]
+----
+
+[.notes]
+--
+You can customize the container from a plugin or a before scenario hook. The class customizing the injection rules has to obtain an instance of the scenario execution container (an instance of BoDi.IObjectContainer). This can be done through constructor injection (see example below).
+--
+
+[%notitle]
+=== Specflow Contexts
+
+[source, language=csharp]
+----
+include::{csharp_source_directory}scenarioContextTags.cs[]
+----
+
+[.notes]
+--
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/ScenarioContext.html
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/FeatureContext.html
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Scoped-Step-Definitions.html#beyond-scope
+--

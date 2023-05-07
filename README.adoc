@@ -1,0 +1,21 @@
+= ilionx-devdays2023-specflow
+
+image::logo.svg["Kaylumah Logo", 460, 300, align="center"]
+
+== Description
+
+Slides (HTML5 https://asciidoctor.org/[Asciidoctor] / https://asciidoctor.org/docs/asciidoctor-revealjs[Asciidoctor-RevealJS]) and code for my `Specflow` presentation on the 2023 edition of the https://www.ilionxdevdays.com/[Ilionx DevDays].
+
+== Slides
+
+Can be found online at https://kaylumah.github.io/ilionx-devdays2023-specflow/
+
+The entrypoint for the presentation can be found at `presentation.adoc` you can run `node convert-slides.js` to preview the presentation locally.
+
+== Example code
+
+Source code used in the presentation can be found under `codesamples` you need dotnet SDK `7.0.202` to run the samples.
+
+== License
+
+This repo is licensed under the link:LICENSE[MIT] license.

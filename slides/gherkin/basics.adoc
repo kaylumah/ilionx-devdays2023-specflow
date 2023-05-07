@@ -1,0 +1,126 @@
+=== Gherkin Syntax
+
+[source, language=gherkin, linenums]
+----
+include::{gherkin_source_directory}calculator.feature[lines=1..11]
+----
+
+[.notes]
+--
+The purpose of the Feature keyword is to provide a high-level description of a software feature, and to group related scenarios.
+The first primary keyword in a Gherkin document must always be Feature, followed by a : and a short text that describes the feature.
+You can only have a single Feature in a .feature file.
+
+The keyword Scenario is a synonym of the keyword Example
+You can have as many steps as you like, but we recommend 3-5 steps per example. Having too many steps will cause the example to lose its expressive power as a specification and documentation.
+
+Describe an initial context (Given steps)
+Describe an event (When steps)
+Describe an expected outcome (Then steps)
+
+You could make the example more fluidly structured by replacing the successive Given’s, When’s, or Then’s with And’s and But’s
+Gherkin also supports using an asterisk (*) in place of any of the normal step keywords. This can be helpful when you have some steps that are effectively a list of things, so you can express it more like bullet points where otherwise the natural language of And etc might not read so elegantly.
+
+Given steps are used to describe the initial context of the system - the scene of the scenario. It is typically something that happened in the past.
+When Cucumber executes a Given step, it will configure the system to be in a well-defined state, such as creating and configuring objects or adding data to a test database.
+The purpose of Given steps is to put the system in a known state before the user (or external system) starts interacting with the system (in the When steps). Avoid talking about user interaction in Given’s. If you were creating use cases, Given’s would be your preconditions.
+It’s okay to have several Given steps (use And or But for number 2 and upwards to make it more readable).
+
+When steps are used to describe an event, or an action. This can be a person interacting with the system, or it can be an event triggered by another system.
+It’s strongly recommended you only have a single When step per Scenario. If you feel compelled to add more, it’s usually a sign that you should split the scenario up into multiple scenarios.
+Most software does something people could do manually (just not as efficiently).
+Try hard to come up with examples that don’t make any assumptions about technology or user interface. Imagine it’s 1922, when there were no computers.
+Implementation details should be hidden in the step definitions.
+
+Then steps are used to describe an expected outcome, or result.
+The step definition of a Then step should use an assertion to compare the actual outcome (what the system actually does) to the expected outcome (what the step says the system is supposed to do).
+While it might be tempting to implement Then steps to look in the database - resist that temptation!
+You should only verify an outcome that is observable for the user (or external system), and changes to a database are usually not.
+--
+
+[%notitle]
+=== DocString
+
+[NOTE]
+Support for multi-line text
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}docstring.feature[]
+----
+
+[.notes]
+--
+You can include multiline strings by the doc string syntax
+--
+
+[%notitle]
+=== Table
+
+[NOTE]
+Support for complex structures
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}table.feature[]
+----
+
+[.notes]
+--
+Use tables for data structures
+--
+
+[%notitle]
+=== Outline
+
+[WARNING, step=1]
+Do not do this
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}steps.feature[]
+----
+
+[.notes]
+--
+Steps are repeatable, but for similar test scenarios there are better options
+--
+
+[%notitle]
+=== Outline
+
+[NOTE]
+Prefer this instead
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}outline.feature[]
+----
+
+[.notes]
+--
+The Scenario Outline keyword can be used to run the same Scenario multiple times, with different combinations of values.
+
+The keyword Scenario Template is a synonym of the keyword Scenario Outline.
+
+A Scenario Outline must contain one or more Examples (or Scenarios) section(s). Its steps are interpreted as a template which is never directly run. Instead, the Scenario Outline is run once for each row in the Examples section beneath it (not counting the first header row).
+
+The steps can use <> delimited parameters that reference headers in the examples table. Cucumber will replace these parameters with values from the table before it tries to match the step against a step definition.
+
+Consider adding a Description column
+--
+
+[%notitle]
+=== Step Defs
+
+[WARNING]
+Keywords are not used for uniqueness
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}stepdefinitions.feature[]
+----
+
+[.notes]
+--
+--

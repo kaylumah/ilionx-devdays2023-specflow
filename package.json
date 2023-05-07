@@ -1,0 +1,25 @@
+{
+  "name": "ilionx-devdays2023-specflow",
+  "version": "1.0.0",
+  "description": "= ilionx-devdays2023-specflow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaylumah/ilionx-devdays2023-specflow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaylumah/ilionx-devdays2023-specflow/issues"
+  },
+  "homepage": "https://github.com/kaylumah/ilionx-devdays2023-specflow#readme",
+  "dependencies": {
+    "@asciidoctor/reveal.js": "^5.0.0-rc.1",
+    "asciidoctor": "^2.2.6",
+    "asciidoctor-kroki": "^0.17.0"
+  }
+}

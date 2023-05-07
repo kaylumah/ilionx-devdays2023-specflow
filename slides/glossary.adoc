@@ -1,0 +1,17 @@
+== Glossary
+
+* Behavior Driven Development (BBD)
+* Domain Specific Language (DSL)
+
+[.notes]
+--
+**Behavior Driven Development** is about understanding, documenting & verifying
+business requirements through illustrative scenarios
+https://specflow.org/learn/bdd/
+
+a language that is designed for a specific domain or purpose. DSLs are often used to simplify complex tasks or concepts by using terms and rules that are familiar to the domain experts.
+
+DSLs can have different levels of abstraction and expressiveness. Some DSLs are very close to natural languages, while others are more formal and technical. Some DSLs are standalone languages, while others are extensions or subsets of existing languages.
+
+A DSL is a language that is tailored for a specific domain or problem. It allows you to express your solutions in terms that are natural and familiar for your domain. For example, if you are developing an online store, you might want to create a DSL that lets you describe products, categories, orders, payments, etc.
+--

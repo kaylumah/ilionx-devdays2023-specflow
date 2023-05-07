@@ -1,0 +1,114 @@
+== Bindings
+
+The glue between Gherkin feature and test code is done via *[Binding]*
+
+[.notes]
+--
+two kind of bindings
+
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Bindings.html
+
+The step definition that automates the scenario at the step level. This means that instead of providing automation for the entire scenario, it has to be done for each separate step. The benefit of this model is that the step definitions can be reused in other scenarios, making it possible to (partly) construct further scenarios from existing steps with less (or no) automation effort.
+
+Hooks can be used to perform additional automation logic on specific events, e.g. before executing a scenario.
+--
+
+[%notitle]
+=== Step Definitions
+
+[source, csharp]
+----
+include::{csharp_source_directory}StepDefinitions.cs[]
+----
+
+[.notes]
+--
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Step-Definitions.html
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Cucumber-Expressions.html
+
+Must be in a public class, marked with the [Binding] attribute.
+Must be a public method.
+Can be either a static or an instance method. If it is an instance method, the containing class will be instantiated once for every scenario.
+--
+
+[%notitle]
+=== Step Definitions
+
+[source, csharp]
+----
+include::{csharp_source_directory}SingleAttribute.cs[]
+----
+
+[source, csharp, step=1]
+----
+include::{csharp_source_directory}MultiAttribute.cs[]
+----
+
+[.notes]
+--
+You can annotate a single method with multiple attributes in order to support different phrasings in the feature file for the same automation logic.
+With SpecFlow v4 you can also use Cucumber Expressions to specify step definitions
+--
+
+[%notitle]
+=== Step Definitions
+
+image::{assets_directory}diagrams/binding.png["Specflow Binding", 1380 , 720]
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Scoped Step Definitions
+
+Use the *[Scope]* attribute to define the scope:
+
+[source, csharp]
+----
+include::{csharp_source_directory}Scope.cs[]
+----
+
+[.notes]
+--
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Scoped-Step-Definitions.html
+
+Be careful! Coupling your step definitions to features and scenarios is an anti-pattern:
+https://cucumber.io/docs/guides/anti-patterns/?lang=java#feature-coupled-step-definitions
+Feature-coupled step definitions are step definitions that can’t be reused across features or scenarios.
+This may lead to an explosion of step definitions, code duplication, and high maintenance costs.
+
+Bindings (step definitions, hooks) are global for the entire SpecFlow project. This means that step definitions bound to a very generic step text (e.g. “When I save the changes”) become challenging to implement. The general solution for this problem is to phrase the scenario steps in a way that the context is clear (e.g. “When I save the book details”).
+--
+
+[%notitle]
+=== Scoped Step Definitions
+
+[source, csharp]
+----
+include::{csharp_source_directory}ScopeStep.cs[]
+----
+
+[.notes]
+--
+--
+
+=== Hooks
+
+* [BeforeFeature]/[AfterFeature]
+* [BeforeScenario]/[AfterScenario]
+* [BeforeScenarioBlock]/[AfterScenarioBlock]
+* [BeforeStep]/[AfterStep]
+
+[.notes]
+--
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Hooks.html
+
+* [BeforeScenario(Order = 0)]
+
+Hooks (event bindings) can be used to perform additional automation logic at specific times, such as any setup required prior to executing a scenario. In order to use hooks, you need to add the Binding attribute to your class
+
+Hooks are global, but can be restricted to run only for features or scenarios by defining a scoped binding, which can be filtered with tags. The execution order of hooks for the same type is undefined, unless specified explicitly
+
+The number indicates the order, not the priority, i.e. the hook with the lowest number is always executed first.
+--

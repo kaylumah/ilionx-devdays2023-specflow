@@ -1,0 +1,63 @@
+== Living Documentation
+
+image:{assets_directory}livingdoc.svg["living doc", 1000, 500]
+
+[.notes]
+--
+https://specflow.org/tools/living-doc/
+https://specflow.org/learn/feature-files/
+https://docs.specflow.org/projects/specflow-livingdoc/en/latest
+--
+
+[%notitle]
+=== Living Doc Screen
+
+image:{assets_directory}screen1.png["living doc 1", 800,400]
+
+[.notes]
+--
+Occasionally you’ll find yourself repeating the same Given steps in all of the scenarios in a Feature.
+
+Since it is repeated in every scenario, this is an indication that those steps are not essential to describe the scenarios; they are incidental details. You can literally move such Given steps to the background, by grouping them under a Background section.
+
+A Background allows you to add some context to the scenarios that follow it. It can contain one or more Given steps, which are run before each scenario, but after any Before hooks.
+
+Don’t use Background to set up complicated states, unless that state is actually something the client needs to know.
+For example, if the user and site names don’t matter to the client, use a higher-level step such as Given I am logged in as a site owner.
+
+Keep your Background section short.
+The client needs to actually remember this stuff when reading the scenarios. If the Background is more than 4 lines long, consider moving some of the irrelevant details into higher-level steps.
+
+Make your Background section vivid.
+Use colourful names, and try to tell a story. The human brain keeps track of stories much better than it keeps track of names like "User A", "User B", "Site 1", and so on.
+
+Keep your scenarios short, and don’t have too many.
+If the Background section has scrolled off the screen, the reader no longer has a full overview of what’s happening. Think about using higher-level steps, or splitting the *.feature file.
+--
+
+[%notitle]
+=== Living Doc Screen
+
+image:{assets_directory}screen2.png["living doc 2", 800,400]
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Living Doc Screen
+
+image:{assets_directory}screen3.png["living doc 3", 800,400]
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Living Doc Screen
+
+image:{assets_directory}screen4.png["living doc 4", 800,400]
+
+[.notes]
+--
+--

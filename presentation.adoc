@@ -1,0 +1,37 @@
+// = Specflow testing in .NET : Gherkin syntax in action
+= Gherkin testing .NET: Specflow session - ilionx DevDays
+Max Hamulyák <max@kaylumah.nl>;
+2023-05-12
+:revealjs_theme: beige
+:description: Slides for my introduction session into Specflow for the ilionx DevDays
+:keywords: kaylumah, ilionx, csharp, xunit, testing, specflow
+:revealjsdir: https://cdn.jsdelivr.net/npm/reveal.js@4.5.0
+// :highlightjsdir: https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.3
+:revealjs_history: true
+:revealjs_slideNumber: true
+:source-highlighter: highlightjs
+:highlightjs-languages: gherkin
+:icons: font
+// custom variables
+:slide_directory: slides/
+:assets_directory: assets/
+:source_directory: {docdir}/codesamples/
+:gherkin_source_directory: {docdir}/codesamples/gherkin/
+:csharp_source_directory: {docdir}/codesamples/csharp/
+:specflow_source_directory: {source_directory}specflow/Test/Specflow/
+
+include::{slide_directory}about.adoc[]
+include::{slide_directory}glossary.adoc[]
+include::{slide_directory}gherkin/intro.adoc[]
+include::{slide_directory}gherkin/syntax.adoc[]
+include::{slide_directory}gherkin/basics.adoc[]
+include::{slide_directory}specflow/intro.adoc[]
+include::{slide_directory}specflow/binding.adoc[]
+include::{slide_directory}specflow/data.adoc[]
+include::{slide_directory}specflow/transform.adoc[]
+include::{slide_directory}livingdoc/intro.adoc[]
+include::{slide_directory}tips.adoc[]
+include::{slide_directory}outro.adoc[]
+
+// beige, black, league, night, serif, simple, sky, solarized, white
+// :revealjs_theme: league

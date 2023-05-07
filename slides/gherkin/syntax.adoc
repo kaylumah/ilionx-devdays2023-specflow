@@ -1,0 +1,43 @@
+[%notitle]
+=== Feature File
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}en.feature[]
+----
+
+[.notes]
+--
+Easy to read and understand by anyone
+--
+
+=== Keywords
+
+- Feature
+- Rule (as of Gherkin 6)
+- Example (or Scenario)
+- Given, When, Then, And, But for steps (or *)
+- Background
+- Scenario Outline (or Scenario Template)
+- Examples (or Scenarios)
+
+[.notes]
+--
+Some words have a special meaning
+--
+
+[%notitle]
+=== Feature File
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}no.feature[]
+----
+
+[.notes]
+--
+Gherkin has been translated to over 70 languages (including emoji)
+The language you choose for Gherkin should be the same language your users and domain experts use when they talk about the domain. Translating between two languages should be avoided.
+
+https://cucumber.io/docs/gherkin/languages/
+--

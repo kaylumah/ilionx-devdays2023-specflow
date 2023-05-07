@@ -1,0 +1,259 @@
+== Step Argument Conversions
+
+Some *[Binding]* need complex types
+
+[.notes]
+--
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Step-Argument-Conversions.html
+https://specflow.org/gherkin/improving-gherkin-specs-with-specflow-step-argument-transformations/
+https://docs.specflow.org/projects/specflow/en/latest/Extend/Value-Retriever.html
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/SpecFlow-Assist-Helpers.html#using-createinstance-with-a-class
+--
+
+[%notitle]
+=== Primitive Conversion
+
+image::{assets_directory}diagrams/conversion_int01.png["Specflow param conversion 1", 875 , 256]
+
+[.notes]
+--
+In order for this to work, SpecFlow must convert the string parameter coming from the step to an instance of the datatype used in the binding method. In our case, this conversion is from a string to an int
+
+SpecFlow provides out-of-the-box support for the conversion of most primitive datatypes
+This even includes support for converting enum members to the proper type.
+--
+
+[%notitle]
+=== Primitive Conversion
+
+[IMPORTANT.fade-up,step=1]
+More natural language
+
+[source, language=gherkin]
+----
+include::{specflow_source_directory}Conversion/Conversion.feature[lines=9]
+----
+
+[source, language=gherkin, step=1]
+----
+include::{specflow_source_directory}Conversion/Conversion.feature[lines=10]
+----
+
+[.notes]
+--
+might be technically correct, you probably wouldn’t talk like this to another person. In human-to-human communication you would probably instead say something like
+
+Given we have no items in stock.
+Step argument transformations allow you to extend SpecFlow’s ability to convert strings in Gherkin steps to any type you wish. This means that we can go back to the very basic version of the step binding in our example, and inform SpecFlow of the desired conversion in a separate step transformation.
+--
+
+[%notitle]
+=== Primitive Conversion
+
+image::{assets_directory}diagrams/conversion_int02.png["Specflow param conversion 2", 1148 , 476]
+
+[.notes]
+--
+Instead of the conversion code being buried in the step binding or an extracted helper method, we now have the conversion separated into its own class.
+By moving the conversion code to the implicit layer of SpecFlow magic, the binding is back on focusing on the business concern of the Gherkin step, i.e. wiring to the production code.
+
+Using step argument transformations can bring a number of benefits, allowing you to write steps in a human-readable way that reflects the way you would express yourself in normal conversation. However, it is important to ensure that team members have at least a basic understanding of the “magic” going on behind the scenes.
+
+It can be challenging for team members not familiar with the step argument transformations feature to understand how SpecFlow “magically” knows how to interpret a string such as “no” as 0. But this is generally an easy problem to solve.
+
+See also https://andrewlock.net/series/using-strongly-typed-entity-ids-to-avoid-primitive-obsession/
+--
+
+[%notitle]
+=== Table Conversion
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}Entities/Conference.cs[lines=6..12]
+----
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Table Conversion
+
+Automation
+[source, language=csharp]
+----
+include::{specflow_source_directory}Mapping/MappingSteps.cs[lines=24..26;44]
+----
+
+[step=1]
+--
+Horizontal Tables
+[source, language=gherkin]
+----
+include::{specflow_source_directory}Mapping/Mapping.feature[lines=20..22]
+----
+--
+
+[step=2]
+--
+Vertical Tables
+[source, language=gherkin]
+----
+include::{specflow_source_directory}Mapping/Mapping.feature[lines=25..28]
+----
+--
+
+[.notes]
+--
+key value can be anything
+--
+
+[%notitle]
+=== Table Conversion
+
+image::{assets_directory}diagrams/conversion_table01.png["Specflow table conversion 1", 1707 , 416]
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Table Conversion
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}Mapping/MappingSteps.cs[lines=24..34;43..44]
+----
+
+[.notes]
+--
+No type safety, would not work for key-value table
+--
+
+[%notitle]
+=== Table Conversion
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}Mapping/MappingSteps.cs[lines=46..56;65..66]
+----
+
+[.notes]
+--
+Has type safety so a bit better
+--
+
+[%notitle]
+=== Table Conversion
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}Mapping/MappingSteps.cs[lines=68..71;75]
+----
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}Mapping/MappingSteps.cs[lines=77..81;84]
+----
+
+[.notes]
+--
+Specflow helpers
+--
+
+[%notitle]
+=== Table Conversion
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}Mapping/MappingSteps.cs[lines=86..87]
+----
+
+[.notes]
+--
+Would be ideal
+--
+
+[%notitle]
+=== Table Conversion
+
+image::{assets_directory}diagrams/conversion_table02.png["Specflow table conversion 2", 984 , 496]
+
+[.notes]
+--
+Custom conversion
+--
+
+[%notitle]
+=== Value Converter NULL
+
+[TIP]
+What will be the value of location?
+
+[source, language=gherkin]
+----
+include::{specflow_source_directory}Mapping/Mapping.feature[lines=31..33]
+----
+
+[source, language=gherkin, step=1]
+----
+include::{specflow_source_directory}Mapping/Mapping.feature[lines=41..43]
+----
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Value Converter NULL
+
+[source, language=gherkin]
+----
+include::{specflow_source_directory}Mapping/Mapping.feature[lines=36..38]
+----
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Value Converter NULL
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}GlobalHooks.cs[lines=11..16;18..23]
+----
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Value Converter GUID
+
+[source, language=gherkin]
+----
+include::{specflow_source_directory}Conversion/Conversion.feature[lines=13..18]
+----
+
+[source, language=csharp]
+----
+include::{specflow_source_directory}Conversion/ConversionSteps.cs[lines=32..34;36]
+----
+
+[.notes]
+--
+--
+
+[%notitle]
+=== Value Converter GUID
+
+[source, language=gherkin]
+----
+include::{specflow_source_directory}Conversion/Conversion.feature[lines=13..23]
+----
+
+[.notes]
+--
+https://github.com/SpecFlowOSS/SpecFlow/tree/master/TechTalk.SpecFlow/Assist/ValueRetrievers
+--

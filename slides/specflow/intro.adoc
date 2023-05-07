@@ -1,0 +1,49 @@
+[.columns.is-vcentered]
+== Specflow
+
+[.column]
+--
+* BDD for .NET
+** Official version of Cucumber for .NET
+** Open source since 2009 (Gáspár Nagy, TechTalk)
+* Execute scenarios using automation code
+--
+
+[.column]
+--
+image::{assets_directory}logos/specflow_logo.svg["Specflow Logo", 250, 150]
+--
+
+[.notes]
+--
+SpecFlow is heavily influenced by Cucumber, which is a BDD tool for Ruby-based applications. However, due to trademark and licensing issues, TechTalk was not allowed to use the name "Cucumber" for their .NET-based BDD tool. As a result, they chose the name "SpecFlow" for their tool. Despite the different name, SpecFlow shares many similarities with Cucumber, including its use of Gherkin syntax for defining scenarios in a natural language format.
+
+Automation is done with Steps (using StepDefinitions) reusable across multiple scenarios.
+--
+
+[%notitle]
+=== Structure
+--
+image::{assets_directory}diagrams/structure.png["Specflow Structure", 960, 600]
+--
+
+[.notes]
+--
+
+Specflow is built on top of test frameworks you are familiar with
+
+https://docs.specflow.org/projects/specflow/en/latest/Installation/Installation.html
+https://docs.specflow.org/projects/specflow/en/latest/Installation/NuGet-Packages.html
+https://docs.specflow.org/projects/specflow/en/latest/Installation/Unit-Test-Providers.html
+--
+
+
+[%notitle]
+=== Structure
+--
+image::{assets_directory}diagrams/layers.png["Specflow Layers", 560, 640]
+--
+
+[.notes]
+--
+--

@@ -1,0 +1,16 @@
+[.columns.is-vcentered]
+== Questions?
+
+[.column]
+--
+image::{assets_directory}QR/repo.svg["Source Code QR", 350, 350]
+--
+
+[.column]
+--
+image::{assets_directory}QR/slides.svg["Slide QR", 350, 350]
+--
+
+[.notes]
+--
+--

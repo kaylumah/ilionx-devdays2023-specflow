@@ -1,0 +1,96 @@
+== Tips & Tricks
+
+=== Glossary
+
+* Business Entities
+* Tags
+
+[.notes]
+--
+--
+
+=== Brief Principles
+
+* Business language
+* Real data
+* Intention revealing
+* Essential
+* Focused
+
+[.notes]
+--
+Brief — Shorter scenarios are easier to read, understand and maintain
+
+* Business language - Business terminology aids cross-discipline collaboration
+* Real data -  Using actual data helps reveal assumptions and edge cases
+* Intention revealing - Describe the desired outcomes, rather than the mechanism of how they are achieved
+* Essential - Omit any information that doesn’t directly illustrate behaviour
+* Focused - Each scenario should only illustrate a single rule
+--
+
+=== Write a good when
+
+Imagine it's 1922
+
+[.notes]
+--
+Most software does something people could do manually (just not as efficiently).
+Try hard to come up with examples that don’t make any assumptions about technology or user interface. Imagine it’s 1922, when there were no computers.
+--
+
+=== More Readable Scenarios
+
+Use ***** or **and**
+
+[.notes]
+--
+https://specflow.org/gherkin/gherkin-conventions-for-readable-specifications/
+Split blocks of given with and/*
+
+https://specflow.org/gherkin/highlight-parameters-for-readability/
+--
+
+=== More Readable Scenarios
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}readable.feature[lines=1..3]
+----
+
+[.notes]
+--
+--
+
+=== More Readable Scenarios
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}readable.feature[lines=5..12]
+----
+
+[.notes]
+--
+--
+
+=== More Readable Scenarios
+
+[source, language=gherkin]
+----
+include::{gherkin_source_directory}readable.feature[lines=15..17]
+----
+
+[.notes]
+--
+--
+
+=== Business Language
+
+Consider target audience
+
+[.notes]
+--
+https://gasparnagy.com/2021/03/solving-how-to-test-apis-with-gherkin-givenwhenthenwithstyle-challenge-21/
+
+It has been mentioned so many times that scenarios should be business-readable and focus on the problem and not the solution, therefore technical terms should be avoided.
+But when we say business-readable, we should not only keep business analysts or domain experts in mind. There are some problems (like public APIs), where the “business” consists of developers or system integrators – so technical people. The statement is still true: focus on the problem and exclude the solution, but the “problem” might consist of details about the HTTP status codes and the JSON message format. Still, solution details, like the details of the web framework we use and its configuration should not be part of the scenarios. 
+--

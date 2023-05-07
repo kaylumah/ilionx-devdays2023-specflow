@@ -1,0 +1,5 @@
+[Binding]
+public class StepDefinitions
+{
+	...
+}
